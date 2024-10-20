@@ -13,14 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-    
-    // return view('welcome', compact('firstName', 'lastName'));
-});
+// Models (importato grazie al namespace)
+use App\Models\Movie;
 
-Route::get('/chi-siamo', function () {
-    return view('subpages.about');
+Route::get('/', function () {
+
+    // per testare il collegamento con il database, mi salvo i movies
+    $movies = Movie::all();
+    // e li mostro in pagina
+    dd($movies);
+
+    return view('welcome',[]);
+    
 });
 
 // Route::get(PERCORSO CON CUI ARRIVARE ALLA PAGINA, FUNZIONE DI CALLBACK CHE MI CREA LA RISPOSTA DA DARE ALL UTENTE)
