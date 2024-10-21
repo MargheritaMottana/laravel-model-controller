@@ -13,18 +13,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Models (importato grazie al namespace)
-use App\Models\Movie;
+// // Models (importato grazie al namespace)
+// use App\Models\Movie;
 
-Route::get('/', function () {
+// Controller (importato)
+use App\Http\Controllers\Guest\PageController;
 
-    // per testare il collegamento con il database, mi salvo i movies
-    $movies = Movie::all();
-    // e li mostro in pagina
-    dd($movies);
+// Route::get('/', function () {
 
-    return view('welcome',[]);
+    // // per testare il collegamento con il database, mi salvo i movies
+    // $movies = Movie::all();
+    // // e li mostro in pagina
+    // dd($movies);
+
+    // // per poter utilizzare i dati del database
+    // return view('welcome', compact('movies'));
     
-});
+// });
 
-// Route::get(PERCORSO CON CUI ARRIVARE ALLA PAGINA, FUNZIONE DI CALLBACK CHE MI CREA LA RISPOSTA DA DARE ALL UTENTE)
+// rotta per utilizzare le funzioni del controller (che in questo caso, si occuperà di mostrare le cose in pagina)
+Route::get('/', [PageController::class, 'index'])->name('guest.welcome');

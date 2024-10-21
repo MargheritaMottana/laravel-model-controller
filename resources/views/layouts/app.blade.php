@@ -16,15 +16,11 @@
 
     <body>
 
-        @include('partials.header')
-
-        <main>
+        <main class="container py-5">
 
             @yield('main-content')
 
         </main>
-
-        @include('partials.footer')
 
         {{-- JS da importare nel body --}}
         @yield('body-imports')
